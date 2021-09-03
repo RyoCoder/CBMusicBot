@@ -27,7 +27,7 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 # Back Button
-BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("🏠 Go back", callback_data="cbback")]])
+BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("🏠 Quay lại", callback_data="cbback")]])
 
 @Client.on_message(filters.text & ~filters.private)
 async def delcmd(_, message: Message):
@@ -44,7 +44,7 @@ async def update_admin(client, message):
     for u in new_ads:
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
-    await message.reply_text("✅ Bot **reloaded correctly !**\n✅ **Admin list** has been **updated !**")
+    await message.reply_text("✅ Bot **được tải lại đúng cách !**\n✅ **Danh sách quản trị viên** đã được **cập nhật !**")
 
 
 # Control Menu Of Player
@@ -53,7 +53,7 @@ async def update_admin(client, message):
 @authorized_users_only
 async def controlset(_, message: Message):
     await message.reply_text(
-        "**💡 Opened music player control menu!**\n\n**💭 You can control the music player just by pressing one of the buttons below**",
+        "**💡 Đã mở menu điều khiển trình phát nhạc!**\n\n**💭 Bạn có thể điều khiển trình phát nhạc chỉ bằng cách nhấn một trong các nút bên dưới**",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -399,7 +399,7 @@ async def un_ban_user(_, message):
     else:
         if str(user_id).lower().startswith("@"):
             await message.reply_text(
-                "✅ Ok accepted, user "
+                "✅ Được chấp nhận, người dùng "
                 f"{user_first_name} can"
                 " Join to this group again!"
             )
@@ -409,7 +409,7 @@ async def un_ban_user(_, message):
                 f"<a href='tg://user?id={user_id}'>"
                 f"{user_first_name}"
                 "</a> is not"
-                " Restricted again!"
+                " Bị hạn chế một lần nữa!"
             )
 
 @Client.on_message(filters.command("m", COMMAND_PREFIXES))
@@ -435,15 +435,15 @@ async def mute_user(_, message):
             await message.reply_text(
                 "✅ Okay,🏻 "
                 f"{user_first_name}"
-                " Successfully muted !"
+                " Đã tắt tiếng thành công !"
             )
         else:
             await message.reply_text(
                 "🏻✅ Okay, "
                 f"<a href='tg://user?id={user_id}'>"
-                "now is"
+                "đã khóa mõm"
                 "</a>"
-                " Muted !"
+                " rồi nha !"
             )
 
 
@@ -462,8 +462,8 @@ async def temp_mute_user(_, message):
     if until_date_val is None:
         await message.reply_text(
             (
-                "The specified time type is invalid. "
-                "Use m, h, or d, format time: {}"
+                "Loại thời gian đã chỉ định không hợp lệ. "
+                "Sử dụng m, h, or d, thời gian định dạng: {}"
             ).format(
                 message.command[1][-1]
             )
@@ -484,16 +484,16 @@ async def temp_mute_user(_, message):
     else:
         if str(user_id).lower().startswith("@"):
             await message.reply_text(
-                "Muted for a while! "
+                "Tắt tiếng một lúc! "
                 f"{user_first_name}"
-                f" Muted for {message.command[1]}!"
+                f"Đã tắt tiếng cho {message.command[1]}!"
             )
         else:
             await message.reply_text(
-                "Muted for a while! "
+                "Tắt tiếng một lúc! "
                 f"<a href='tg://user?id={user_id}'>"
-                "is"
+                "bây giờ"
                 "</a>"
-                " now "
-                f" Muted, for {message.command[1]}!"
+                " câm mồm "
+                f" ngay, khóa mõm {message.command[1]}!"
             )
